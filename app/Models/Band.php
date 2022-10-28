@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Band extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['name', 'thumbnail', 'slug'];
+
+    public function albums()
+    {
+       return $this->hasMany(Album::class);
+    }
+
+    public function lyrics()
+    {
+       return $this->hasMany(Lyric::class);
+    }
+
+    public function genres()
+    {
+       return $this->belongsToMany(Genre::class);
+    }
+}
